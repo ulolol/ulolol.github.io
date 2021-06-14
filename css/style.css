@@ -220,7 +220,7 @@
 			font-size: 1.25em;
 			margin: 0.75em 0 0.25em 0;
 			opacity: 0.75;
-			
+			text-shadow: 2px 2px #008080;
 		}
 
 		#header nav {
@@ -396,4 +396,5 @@
 		position: absolute;
 		text-align: center;
 		width: 100%;
+		text-shadow: 2px 2px #008080;
 	}
