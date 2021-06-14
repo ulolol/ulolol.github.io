@@ -225,6 +225,7 @@
 
 		#header nav {
 			margin: 1.5em 0 0 0;
+			text-shadow: 2px 2px #008080;
 		}
 
 			#header nav li {
@@ -396,5 +397,5 @@
 		position: absolute;
 		text-align: center;
 		width: 100%;
-		text-shadow: 2px 2px #008080;
+		text-shadow: 2px 2px #3366ff;
 	}
