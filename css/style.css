@@ -253,6 +253,15 @@
 				width: 5.35em;
 			}
 
+				#header ul {
+				-moz-animation-delay: 2.5s;
+				-webkit-animation-delay: 2.5s;
+				-o-animation-delay: 2.5s;
+				-ms-animation-delay: 2.5s;
+				animation-delay: 2.5s;
+				text-shadow: 2px 2px #3366ff;
+
+				}
 				#header nav li:nth-child(1) {
 					-moz-animation-delay: 2.5s;
 					-webkit-animation-delay: 2.5s;
