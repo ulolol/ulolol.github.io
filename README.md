@@ -1,4 +1,4 @@
-# Portfolio Template
+# My GitHub Portfolio 
 
 ### A beautiful minimal and accessible portfolio ✨.
 
