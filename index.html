@@ -1,69 +1,274 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+<!-- 
+  Hello 😊.
+
+  This template is designed and developed by Nisar Hassan Naqvi
+  for anyone to use for free or customize the way they like.
+
+  Github Repo: https://github.com/nisarhassan12/portfolio-template/
+  My Website: https://nisar.dev
+
+  For business & inquires, contact me => syednisarhassan12@gmail.com
 -->
-<html>
-	<head>
-		
-		<title>Vidish Srivastava</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/skel.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-wide.css" />
-			<link rel="stylesheet" href="css/style-noscript.css" />
-		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-	</head>
-	<body class="loading">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
 
-				<!-- Header -->
-					<header id="header">
-						<h1 style="color:#00ace6;">Vidish Srivastava</h1>
-						<p style="color: #6600ff;">ML & AI Enthusiast &nbsp;&bull;&nbsp; Python & R Coder &nbsp;&bull;&nbsp; Linux and Android System Scripter &nbsp;&bull;&nbsp; Distro Hopper</p>
-						<p style="color: #0099cc;">
-							<ul style="color: #007a99;">
-								<li><a href="http://coursera.org/verify/specialization/E4TX97Q8B6S6">Data Science Specialization - Johns Hopkins University.</a></li>
+<!--
+  Follow the instructions written in comments to create your stunning portfolio
+-->
 
-								<li><a href="http://ude.my/UC-5c277881-ed30-478e-8a3e-3e80f37d9777">Complete Python Masterclass - Udemy.</a></li>
+<!DOCTYPE html>
+<html lang="en">
 
-								<li><a href="http://www.phoenixos.com/en_US/phoenixos">Created Custom Python Scripts for LLVM Automation and Kernel compilation and testing at PhoenixOS.</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
 
-								<li><a href="https://www.thecollegemonk.com/">Interned as an SEO, Content and marketing intern at TheCollegeMonk.</a></li>
-							
-								<li><a>Relatively firm grasp of Linux systems and kernel management.</a></li>
-							
-								<li><a>Quite comfortable at coding in Python and R.</a></li>
-							
-								<li><a>Worked on a few Machine Learning projects, including OpenCV and TensorFlow.</a></li>
-							</ul>
-						</p>
-						<nav>
-							<ul>
-								<li><a href="https://github.com/ulolol" class="icon fa-github"><span class="label">Github</span></a></li>
-								<li><a href="mailto: kaosaod@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-							</ul>
-						</nav>
-					</header>
+  <!-- Put your site title here -->
+  <title>
+    | Vidish Srivastava | 
+  </title>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<h2> Connect with me on Linkedin :   <a href="https://www.linkedin.com/in/vidish-srivastava-kaos/">Vidish Srivastava</a>.</h2>
-					</footer>
-				
-			</div>
-		</div>
-	</body>
+  <meta name="description" content="Add small description of yourslef.">
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->  
+  Python &nbsp;&bull;&nbsp; R &nbsp;&bull;&nbsp; Linux & Android Kernel &nbsp;&bull;&nbsp; Machine Learning &nbsp;&bull;&nbsp; Distro Hopper
+  <meta name="keywords" content=" Python &nbsp;&bull;&nbsp; R &nbsp;&bull;&nbsp; Linux & Android Kernel &nbsp;&bull;&nbsp; Machine Learning &nbsp;&bull;&nbsp; Distro Hopper" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <!-- ***** Header ***** -->
+
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+          <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="#clients" class="nav__link">Past Experiences</a></li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary">
+          <!-- Replace the following name with your name -->
+          <span>Vidish Srivastava</span>
+        </h1>
+        <!-- Put a small paragraph about yourself -->
+        <p>Tech Enthusiast. Python & R programmer. Linux and Android System programming to Scripts. Exploring Machine Learning and Artificial Intelligence</p>
+        <a href="#contact" class="btn btn--pink">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ***** Work ***** -->
+
+    <section class="work" id="work">
+      <div class="row">
+        <h2>Projects</h2>
+        <h4>Few of my Projects to glance at</h4><br><br>
+        <div class="work__boxes">
+
+          <!-- Each div with the work__box class is a project. -->
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>AdClick fraud detection</h3>
+              <p>
+                A Machine Learning model that detects Ad - Click frauds from Ad provider reports and segregates users as Legitimately interested in the Ad or as Bots.
+                Complete with a Web Front-end that displays user location on a world map.
+              </p>
+              <ul class="work__list">
+                <li>HTML5</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Flask</li>
+                <li>Bootstrap</li>
+                <li>Python</li>
+                <li>LightGBM</li>
+                <li>Basemap</li>
+                <li>Feature Enginnering</li>
+                <li>Random sampling and Extensive Data Cleaning</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="https://github.com/ulolol/FinalYearProjectClickAdFraud" title="View Source Code" target="_blank">
+                  <img src="./images/github.svg" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/adclick.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>NooBoT</h3>
+              <p>
+                A basic Chatbot that can reply to your queries and performs all the basic chatbot functions along with a few custom replies.
+                Very much a WIP.
+                Need to create a Front-end for the Chatbot. Currently CLI based only.
+                Has been trained on the English Corpus as well as the Ubuntu Corpus containing over 26M natural conversations.
+              </p>
+              <ul class="work__list">
+                <li>Python</li>
+                <li>Chatterbot</li>
+                <li>SqLite3</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="https://github.com/ulolol/NooBoT">
+                  <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/noobot.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <h3>Check out my Linkedin for complete list of projects.</h3>
+      </div>
+    </section>
+
+    <!-- ***** Clients ***** -->
+
+    <section class="client" id="clients">
+      <div class="row">
+        <h2>Past Experiences</h2>
+        <div class="client__logos">
+          <!-- Add logos of the clients or companies you'have worked with. -->
+          <img src="./images/phoslogo.jpg" class="client__logo" alt="Company 2" />
+        </div>
+          <h2>PhoenixOS</h2>
+          <p style="color: whitesmoke; margin-left: 50px;">Worked on the open-source Kernel of Phoenix OS that helps run Android on x86-64 systems.<br>
+            &nbsp;&bull;&nbsp;Integrated Python scripting into the Linux Development Workflow<br>
+            &nbsp;&bull;&nbsp;Custom Python Scripts for LLVM Automation<br>
+            &nbsp;&bull;&nbsp;Logs and Source syncing with SQL Backend<br>
+            &nbsp;&bull;&nbsp;Compiling Linux Kernels using LLVM<br>
+            &nbsp;&bull;&nbsp;Testing Linux Kernels<br>
+            &nbsp;&bull;&nbsp;Maintaining and Upstreaming Linux Kernels</p>
+        <div class="client__logos">
+          <img src="./images/tcmlogo.jpg" class="client__logo" alt="Company 3" />
+        </div>
+          <h2>The College Monk</h2>
+          <p style="color: whitesmoke; margin-left: 50px;">Worked as an SEO, Content and Marketing Intern<br>
+            &nbsp;&bull;&nbsp;Developed CornerStone Page for Student Loans Financing<br>
+            &nbsp;&bull;&nbsp;On-Page SEO<br>
+            &nbsp;&bull;&nbsp;SERP Trend Analysis<br>
+            &nbsp;&bull;&nbsp;Back-linking of articles Mechanics related to Website CPC<br>
+            &nbsp;&bull;&nbsp;Content Optimization Techniques<br>
+            &nbsp;&bull;&nbsp;SEO Toolkit<br>
+            &nbsp;&bull;&nbsp;Content Writer</p>
+      </div>
+    </section>
+
+    <!-- ***** About ***** -->
+
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About Me</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <!-- Replace the below paragraph with info about yourself -->
+            <p>
+              I have worked as a kernel compile/Tester for 2 years (2016-2019) for PhoenixOS and maintained open-source device trees<br>
+              for 3 devices (GT-P3110, cancro, rosy) over the course of 7 years (2012-2020) since my High School days.
+              <br><br>
+              I have Interned as a Content and marketing intern and have worked on SEO at TheCollegeMonk.<br><br>
+
+              Retired from XDA Developers as a Senior Developer and Recognized Contributor, compiling and creating kernels and system modules,<br>
+              as well as system scripts. (Worked on devices like GT-P3110, aries, cancro, vibe X3, rosy, M30sdd, beryllium ).<br><br>
+
+              Completed Data Science Specialization: Foundations using R, Johns Hopkins University.<br><br>
+
+              I have a relatively firm grasp of Linux systems and kernel management.<br><br>
+
+              Quite comfortable at coding in Python and R. Preferred language: Python<br><br>
+
+              Worked on a few Machine Learning projects, including OpenCV and TensorFlow. (AD Click Fraud Detection, Self Parking RC car, AI chatbot, WiFi Coverage Analyzer)
+            </p>
+            <!-- Provide a link to your resume -->
+            <a href="https://www.linkedin.com/in/vidish-srivastava-kaos/" class="btn">Connect with me on Linkedin</a>
+          </div>
+
+          <div class="about__photo-container">
+            <!-- Add a nice photo of yourself -->
+            <img class="about__photo" src="./images/mypic.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ***** Contact ***** -->
+
+  <section class="contact" id="contact">
+    <div class="row">
+      <h2>Get in Touch</h2>
+      <div class="contact__info">
+        <p>
+          Are you just checking out my site? 
+          Do you have an interesting job offer for me? 
+          Do you want to ask some questions? 
+          or have some advice for me? or just want to say "Hi 👋". 
+          In any case, feel free to Let me know. I
+          will do my best to respond back. 😃 The quickest way to reach out to
+          me is via an email or Linkedin.
+        </p>
+        <!-- Replace the email with yours -->
+        <a href="mailto:kaosaod@gmail.com" class="btn">Send me a Mail!</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://github.com/ulolol/" title="Link to Github Profile">
+            <img src="./images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.linkedin.com/in/vidish-srivastava-kaos/">
+            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+
+      <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
+      <p>
+        &copy; 2020 - Original Template designed & developed by <a href="https://nisar.dev" class="link">Nisar</a>(Show him some love), Modified by Yours Truly.
+      </p>
+      <div class="footer__github-buttons">
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true"
+          frameborder="0" scrolling="0" width="170" height="20" title="Watch Portfolio Template on GitHub">
+        </iframe>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+  <script src="./index.js"></script>
+</body>
+
 </html>
