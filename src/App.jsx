@@ -46,7 +46,7 @@ function App() {
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <li><a href="https://github.com/ulolol" className="hover:text-primary-600">GitHub</a></li>
                     <li><a href={LINKEDIN_URL} className="hover:text-primary-600">LinkedIn</a></li>
-                    <li><a href="mailto:vidish@example.com" className="hover:text-primary-600">Email</a></li>
+                    <li><a href="mailto:kaosaod@gmail.com" className="hover:text-primary-600">Email</a></li>
                   </ul>
                 </div>
 
@@ -57,7 +57,7 @@ function App() {
                     Interested in collaboration or have questions? Let's connect!
                   </p>
                   <a
-                    href="mailto:vidish@example.com"
+                    href="mailto:kaosaod@gmail.com"
                     className="text-primary-600 dark:text-primary-400 font-medium hover:underline"
                   >
                     Send me a message →

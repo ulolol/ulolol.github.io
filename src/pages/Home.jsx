@@ -50,7 +50,7 @@ export const Home = () => {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
             </Link>
             <a
-              href="mailto:vidish@example.com"
+              href="mailto:kaosaod@gmail.com"
               className="btn-secondary inline-flex items-center justify-center gap-2"
             >
               Get In Touch
