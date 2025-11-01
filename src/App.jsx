@@ -68,7 +68,7 @@ function App() {
               {/* Divider */}
               <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
                 <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
-                  <p>&copy; 2024 Vidish Srivastava. All rights reserved.</p>
+                  <p>&copy; 2025 Vidish Srivastava. All rights reserved.</p>
                   <p>Built with React, Tailwind CSS & ❤️</p>
                 </div>
               </div>
