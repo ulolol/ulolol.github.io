@@ -8,6 +8,8 @@ import { Projects } from './pages/Projects'
 import { Skills } from './pages/Skills'
 import { Certifications } from './pages/Certifications'
 
+const LINKEDIN_URL = 'https://linkedin.com/in/vidish-srivastava-kaos'
+
 function App() {
   return (
     <ThemeProvider>
@@ -43,7 +45,7 @@ function App() {
                   <h4 className="font-semibold mb-4">Quick Links</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <li><a href="https://github.com/ulolol" className="hover:text-primary-600">GitHub</a></li>
-                    <li><a href="https://linkedin.com/in/vidish-srivastava-kaos" className="hover:text-primary-600">LinkedIn</a></li>
+                    <li><a href={LINKEDIN_URL} className="hover:text-primary-600">LinkedIn</a></li>
                     <li><a href="mailto:vidish@example.com" className="hover:text-primary-600">Email</a></li>
                   </ul>
                 </div>

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
 
+const LINKEDIN_URL = 'https://linkedin.com/in/vidish-srivastava-kaos'
+
 export const Home = () => {
   return (
     <div className="page-transition">
@@ -67,7 +69,7 @@ export const Home = () => {
               <Github size={24} className="group-hover:scale-110 transition" />
             </a>
             <a
-              href="https://linkedin.com/in/vidish-srivastava-kaos"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition group"
