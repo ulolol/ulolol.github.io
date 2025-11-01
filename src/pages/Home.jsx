@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
-import profileImage from '../assets/images/profile.jpg'
 
 export const Home = () => {
   return (
@@ -13,7 +12,7 @@ export const Home = () => {
           <div className="mb-8 animate-fade-in">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary-600 to-accent-600 p-1 animate-glow">
               <img
-                src={profileImage}
+                src="/profile.jpg"
                 alt="Vidish Srivastava"
                 className="w-full h-full rounded-full object-cover"
               />
@@ -68,7 +67,7 @@ export const Home = () => {
               <Github size={24} className="group-hover:scale-110 transition" />
             </a>
             <a
-              href="https://linkedin.com/in/vidish-srivastava"
+              href="https://linkedin.com/in/vidish-srivastava-kaos"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition group"
