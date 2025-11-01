@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
+import profileImage from '../assets/images/profile.jpg'
 
 export const Home = () => {
   return (
@@ -12,7 +13,7 @@ export const Home = () => {
           <div className="mb-8 animate-fade-in">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary-600 to-accent-600 p-1 animate-glow">
               <img
-                src="/images/profile.jpg"
+                src={profileImage}
                 alt="Vidish Srivastava"
                 className="w-full h-full rounded-full object-cover"
               />
