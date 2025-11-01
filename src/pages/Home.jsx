@@ -11,11 +11,11 @@ export const Home = () => {
           {/* Profile Avatar */}
           <div className="mb-8 animate-fade-in">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary-600 to-accent-600 p-1 animate-glow">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-950 flex items-center justify-center">
-                <span className="text-5xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-                  V
-                </span>
-              </div>
+              <img
+                src="/images/profile.jpg"
+                alt="Vidish Srivastava"
+                className="w-full h-full rounded-full object-cover"
+              />
             </div>
           </div>
 
