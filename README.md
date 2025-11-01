@@ -203,8 +203,8 @@ This portfolio is open source and available under the MIT License.
 ## Contact
 
 - GitHub: [@ulolol](https://github.com/ulolol)
-- LinkedIn: [Vidish Srivastava](https://linkedin.com/in/vidish-srivastava)
-- Email: vidish@example.com
+- LinkedIn: [Vidish Srivastava](https://linkedin.com/in/vidish-srivastava-kaos)
+- Email: kaosaod@gmail.com
 
 ---
 
