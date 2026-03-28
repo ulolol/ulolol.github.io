@@ -50,9 +50,14 @@ const Sidebar = ({ activeView, setView }: SidebarProps) => {
       </nav>
 
       <div className="p-6 space-y-4">
-        <button className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-surface-container-lowest font-headline italic font-black uppercase tracking-tighter clipped-corner active:scale-95 transition-all">
+        <a 
+          href="https://github.com/ulolol" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block text-center w-full py-3 bg-gradient-to-r from-primary to-primary-container text-surface-container-lowest font-headline italic font-black uppercase tracking-tighter clipped-corner active:scale-95 transition-all"
+        >
           START QUEST
-        </button>
+        </a>
         <div className="pt-4 border-t border-outline-variant/20 space-y-2">
           <button className="flex items-center gap-4 text-on-surface-variant hover:text-primary-dim transition-colors w-full text-left">
             <TerminalIcon className="w-4 h-4" />
