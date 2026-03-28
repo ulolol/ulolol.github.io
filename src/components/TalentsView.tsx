@@ -44,7 +44,7 @@ const TalentsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linke
               </div>
               <div>
                 <h3 className="text-2xl font-headline italic font-black uppercase tracking-tighter text-on-surface">{cat.name}</h3>
-                <div className="font-label text-xs text-primary uppercase tracking-widest">RANK: SENIOR OPERATOR</div>
+                <div className="font-label text-xs text-primary uppercase tracking-widest">RANK: ARCHITECTURAL OPERATOR</div>
               </div>
             </div>
 
