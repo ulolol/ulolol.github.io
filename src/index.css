@@ -1,61 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,900;1,900&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space_Grotesk:wght@300;500;700&display=swap');
+@import "tailwindcss";
 
-* {
-  @apply transition-colors duration-300;
+@theme {
+  --font-headline: "Epilogue", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-label: "Space Grotesk", monospace;
+
+  --color-surface: #0a0f13;
+  --color-surface-container: #141a1f;
+  --color-surface-container-low: #0e1418;
+  --color-surface-container-high: #1a2026;
+  --color-surface-container-highest: #1f272c;
+  --color-surface-container-lowest: #000000;
+  
+  --color-primary: #8ff5ff;
+  --color-primary-dim: #00deec;
+  --color-primary-container: #00eefc;
+  
+  --color-secondary: #ff7168;
+  --color-tertiary: #ffe792;
+  
+  --color-on-surface: #f3f7fd;
+  --color-on-surface-variant: #a7abb1;
+  
+  --color-outline: #71767b;
+  --color-outline-variant: #43484d;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-white;
-}
-
-@layer components {
-  .nav-link {
-    @apply px-4 py-2 rounded-lg hover:bg-primary-100 dark:hover:bg-gray-800 transition-all duration-300;
-  }
-
-  .btn-primary {
-    @apply px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg;
-  }
-
-  .btn-secondary {
-    @apply px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-medium transition-all duration-300;
-  }
-
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg dark:shadow-gray-900 transition-all duration-300;
-  }
-
-  .card:hover {
-    @apply shadow-xl dark:shadow-gray-800 transform -translate-y-1;
-  }
-
-  .section-title {
-    @apply text-4xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
-  }
-
-  .section-subtitle {
-    @apply text-lg text-gray-600 dark:text-gray-400;
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary selection:text-surface-container-lowest;
   }
 }
 
-/* Smooth scroll for pagination */
-.page-transition {
-  animation: fadeIn 0.3s ease-in-out;
+.clipped-corner {
+  clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 0 100%);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.stat-segment {
+  height: 4px;
+  width: 8%;
+  background-color: currentColor;
+}
+
+.glass-panel {
+  background: rgba(31, 39, 44, 0.6);
+  backdrop-filter: blur(12px);
 }

@@ -1,0 +1,61 @@
+{
+  "name": "Vidish Srivastava",
+  "headline": "Technical Architect | AI Lead | Google Cloud Certified GenAI Leader",
+  "avatarUrl": "profile.jpg",
+  "skills": [
+    "Python", "Linux Kernel Management", "C/C++", "Assembly",
+    "PostgreSQL", "Data Scraping", "Information Retrieval", "MongoDB",
+    "Deep Neural Networks", "Machine Learning", "TensorFlow", "PyTorch",
+    "AI/ML Leadership", "Open Source Architecture", "Quantum Computing", "Systems Design"
+  ],
+  "projects": [
+    {
+      "id": "pj-quantum",
+      "title": "Quantum_Kodes",
+      "description": "Diving deep into the potential of quantum computing to enhance and transform machine learning applications.",
+      "startDate": "2024-03-01"
+    },
+    {
+      "id": "pj-thales-2",
+      "title": "ThalesDocsBotv2",
+      "description": "Real-time documentation search with no pre-indexing required. Instant responses powered by Gemini Flash.",
+      "startDate": "2025-10-01",
+      "endDate": "2025-10-31"
+    },
+    {
+      "id": "pj-kernel",
+      "title": "KaOtiCKerneL",
+      "description": "Kernel built from SCRATCH using ASM and C with a dedicated BootLoader, supporting 64-Bit execution.",
+      "startDate": "2023-03-01",
+      "endDate": "2024-01-31"
+    },
+    {
+      "id": "pj-synthetic",
+      "title": "SyntheticArtiste",
+      "description": "A Deep Learning-based Python System that generates Artistic Images using multi-DNN feedback loops.",
+      "startDate": "2022-05-01",
+      "endDate": "2022-05-31"
+    },
+    {
+      "id": "pj-xda",
+      "title": "XDA Developers Legacy",
+      "description": "Created kernels, system modules, and scripts for 7+ devices over 7 years as a Recognized Contributor.",
+      "startDate": "2012-01-01",
+      "endDate": "2020-01-01"
+    },
+    {
+      "id": "pj-clickfraud",
+      "title": "AD Click Fraud Detection",
+      "description": "Machine learning model to detect and prevent fraudulent ad clicks.",
+      "startDate": "2022-01-01",
+      "endDate": "2022-02-01"
+    },
+    {
+      "id": "pj-selfpark",
+      "title": "Self-Parking RC Car",
+      "description": "Autonomous RC car capable of self-parking using computer vision and OpenCV.",
+      "startDate": "2021-08-01",
+      "endDate": "2021-12-01"
+    }
+  ]
+}
