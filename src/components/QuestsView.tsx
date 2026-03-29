@@ -1,6 +1,36 @@
 import { GitHubRepo, LinkedInProfile } from '../types';
 import { motion } from 'motion/react';
-import { Target, Clock, CheckCircle2, AlertCircle, Sword, Trophy } from 'lucide-react';
+import { Sword, Trophy } from 'lucide-react';
+
+// Per-quest difficulty overrides (key = title, exact or case-insensitive normalized)
+const DIFFICULTY_OVERRIDES: Record<string, string> = {
+  'kaotichernel':          'LEGENDARY',
+  'xda developers legacy': 'ULTIMATUS',
+  'ad click fraud detection': 'LEGENDARY',
+  'snapper-tui-rust':      'LEGENDARY',
+  'ka0s_perplexed':        'EPIC',
+  'picoclaw':              'ELITE',
+  'pokemon-terminal':      'EPIC',
+};
+
+const DIFFICULTY_COLORS: Record<string, string> = {
+  ULTIMATUS: 'text-yellow-300 border-yellow-300/40 bg-yellow-300/10',
+  LEGENDARY: 'text-secondary border-secondary/40 bg-secondary/10',
+  EPIC:      'text-tertiary border-tertiary/40 bg-tertiary/10',
+  ELITE:     'text-primary border-primary/40 bg-primary/10',
+  COMMON:    'text-on-surface-variant border-outline-variant/20 bg-surface-container-highest',
+};
+
+/** Resolve difficulty for a given quest title */
+const resolveDifficulty = (rawTitle: string, defaultDifficulty: string): string => {
+  const key = rawTitle.toLowerCase().replace(/_/g, '-');
+  // Check exact normalized key
+  if (DIFFICULTY_OVERRIDES[key]) return DIFFICULTY_OVERRIDES[key];
+  // Check space-separated variant
+  const spaceKey = rawTitle.toLowerCase();
+  if (DIFFICULTY_OVERRIDES[spaceKey]) return DIFFICULTY_OVERRIDES[spaceKey];
+  return defaultDifficulty;
+};
 
 const QuestsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: LinkedInProfile | null }) => {
   // Map LinkedIn projects to quests
@@ -9,7 +39,7 @@ const QuestsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linked
     title: p.title,
     status: p.endDate ? 'COMPLETED' : 'IN_PROGRESS',
     reward: 'EXPERIENCE_GAINED',
-    difficulty: p.endDate ? 'ELITE' : 'LEGENDARY',
+    difficulty: resolveDifficulty(p.title, p.endDate ? 'ELITE' : 'LEGENDARY'),
     description: p.description
   }));
 
@@ -22,7 +52,7 @@ const QuestsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linked
       title: repo.name,
       status: 'ACTIVE',
       reward: '5 STARS',
-      difficulty: repo.stargazers_count > 10 ? 'EPIC' : 'COMMON',
+      difficulty: resolveDifficulty(repo.name, repo.stargazers_count > 10 ? 'EPIC' : 'COMMON'),
       description: repo.description || 'No description available in archives.'
     }));
 
@@ -76,7 +106,7 @@ const QuestsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linked
                 </div>
               </div>
 
-              <div className="px-4 py-2 bg-surface-container-highest border border-outline-variant/20 font-label text-[10px] uppercase tracking-widest text-on-surface-variant">
+              <div className={`px-4 py-2 border font-label text-[10px] uppercase tracking-widest font-bold ${DIFFICULTY_COLORS[quest.difficulty] ?? DIFFICULTY_COLORS['COMMON']}`}>
                 {quest.difficulty}
               </div>
             </div>

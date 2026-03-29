@@ -82,7 +82,7 @@ export default function App() {
               </p>
             </section>
 
-            <StatsOverview repos={repos} />
+            <StatsOverview repos={repos} linkedin={linkedin} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {loading ? (
