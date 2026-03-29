@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Compass, Backpack, FileText, ClipboardList } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import ProjectCard from './components/ProjectCard';
@@ -67,14 +68,14 @@ export default function App() {
       <Header profile={profile} linkedin={linkedin} activeView={view} setView={setView} />
       <Sidebar activeView={view} setView={setView} />
       
-      <main className="ml-72 pt-28 px-8 pb-12">
+      <main className="md:ml-72 pt-28 px-4 md:px-8 pb-24 md:pb-12">
         {view === 'INVENTORY' && (
           <>
             <section className="mb-12 relative">
-              <div className="absolute -left-12 top-0 w-2 h-24 bg-primary"></div>
-              <div className="flex items-end gap-4 mb-2">
-                <h1 className="text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">VANGUARD_REPO</h1>
-                <span className="font-label text-primary font-bold tracking-[0.3em] mb-1 animate-pulse">SCANNING_INVENTORY...</span>
+              <div className="absolute -left-12 top-0 w-2 h-24 bg-primary hidden md:block"></div>
+              <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-2">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">VID.KAOS</h1>
+                <span className="font-label text-primary text-[10px] sm:text-xs font-bold tracking-[0.3em] mb-1 animate-pulse">SCANNING_INVENTORY...</span>
               </div>
               <p className="font-body text-on-surface-variant max-w-2xl text-lg">
                 Neural archives of high-velocity deployment modules crafted by <span className="text-primary font-bold">{linkedin?.name || profile?.name || 'ulolol'}</span>. Tactical grade software engineering.
@@ -103,7 +104,7 @@ export default function App() {
         {view === 'TALENTS' && <TalentsView repos={repos} linkedin={linkedin} />}
         {view === 'QUESTS' && <QuestsView repos={repos} linkedin={linkedin} />}
 
-        <footer className="mt-20 flex justify-between items-center border-t border-outline-variant/10 py-8">
+        <footer className="mt-20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-outline-variant/10 py-8">
           <div className="flex flex-col gap-2">
             <span className="font-label text-[10px] tracking-widest text-primary">SYSTEM STATUS: OPTIMAL // ARCHIVE v2.4</span>
             <span className="font-label text-[8px] tracking-[0.4em] text-on-surface-variant uppercase">Designed for high-velocity deployment</span>
@@ -116,9 +117,12 @@ export default function App() {
         </footer>
       </main>
 
-      {/* Mobile Nav Placeholder */}
-      <div className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface/80 backdrop-blur-lg border-t border-primary/20 md:hidden">
-        {/* Mobile nav items would go here */}
+      {/* Mobile Bottom Nav */}
+      <div className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container-low/95 backdrop-blur-xl border-t border-primary/20 md:hidden">
+        <MobileNavItem icon={<Compass className="w-5 h-5" />} label="Maps" active={view === 'MAPS'} onClick={() => setView('MAPS')} />
+        <MobileNavItem icon={<Backpack className="w-5 h-5" />} label="Inventory" active={view === 'INVENTORY'} onClick={() => setView('INVENTORY')} />
+        <MobileNavItem icon={<FileText className="w-5 h-5" />} label="Talents" active={view === 'TALENTS'} onClick={() => setView('TALENTS')} />
+        <MobileNavItem icon={<ClipboardList className="w-5 h-5" />} label="Quests" active={view === 'QUESTS'} onClick={() => setView('QUESTS')} />
       </div>
     </div>
   );
@@ -128,4 +132,26 @@ const FooterLink = ({ label }: { label: string }) => (
   <a href="#" className="font-label text-[10px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors">
     {label}
   </a>
+);
+
+const MobileNavItem = ({
+  icon,
+  label,
+  active,
+  onClick
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={`flex flex-col items-center gap-1 py-1 px-3 transition-colors ${
+      active ? 'text-primary' : 'text-on-surface-variant'
+    }`}
+  >
+    {icon}
+    <span className="font-label text-[9px] uppercase tracking-wider">{label}</span>
+  </button>
 );

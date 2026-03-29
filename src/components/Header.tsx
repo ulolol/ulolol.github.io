@@ -12,7 +12,7 @@ const Header = ({ profile, linkedin, activeView, setView }: HeaderProps) => {
   return (
     <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-surface/60 backdrop-blur-xl border-b border-outline-variant/10">
       <div className="flex items-center gap-8">
-        <span className="text-2xl font-black italic text-primary tracking-widest font-headline">KINETIC ARCHIVE</span>
+        <span className="text-2xl font-black italic text-primary tracking-widest font-headline">KINETIC VANGUARD</span>
         <nav className="hidden md:flex gap-6">
           <HeaderLink label="MAPS" active={activeView === 'MAPS'} onClick={() => setView('MAPS')} />
           <HeaderLink label="INVENTORY" active={activeView === 'INVENTORY'} onClick={() => setView('INVENTORY')} />
@@ -40,14 +40,6 @@ const Header = ({ profile, linkedin, activeView, setView }: HeaderProps) => {
         <button className="text-on-surface-variant hover:bg-primary/10 p-2 rounded transition-all">
           <Settings className="w-5 h-5" />
         </button>
-        {(linkedin?.avatarUrl || profile?.avatar_url) && (
-          <img
-            alt="Tactical Avatar"
-            className="w-10 h-10 rounded border-2 border-primary-dim shadow-[0_0_10px_rgba(0,222,236,0.3)] object-cover"
-            src={linkedin?.avatarUrl || profile?.avatar_url}
-            referrerPolicy="no-referrer"
-          />
-        )}
       </div>
     </header>
   );

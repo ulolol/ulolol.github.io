@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Compass, Backpack, FileText, ClipboardList, Terminal as TerminalIcon, LogOut } from 'lucide-react';
+import { Compass, Backpack, FileText, ClipboardList, Terminal as TerminalIcon, LogOut } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface SidebarProps {
@@ -9,15 +9,17 @@ interface SidebarProps {
 
 const Sidebar = ({ activeView, setView }: SidebarProps) => {
   return (
-    <aside className="fixed left-0 top-0 h-full z-40 flex flex-col pt-24 bg-surface-container-low/95 backdrop-blur-md w-72 border-r border-outline-variant/10">
-      <div className="px-6 mb-8">
-        <div className="bg-surface-container p-4 rounded-lg flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary/20 flex items-center justify-center rounded">
-            <Shield className="text-primary w-5 h-5" />
-          </div>
+    <aside className="fixed left-0 top-0 h-full z-40 flex-col pt-24 bg-surface-container-low/95 backdrop-blur-md w-72 border-r border-outline-variant/10 hidden md:flex">
+      <div className="px-6 mb-8 text-center">
+        <div className="bg-surface-container p-6 rounded-lg flex flex-col items-center gap-4">
+          <img
+            src="/profile.jpg"
+            alt="Profile"
+            className="w-24 h-24 rounded-lg object-cover border-2 border-primary/40 shadow-[0_0_15px_rgba(0,222,236,0.3)]"
+          />
           <div>
-            <div className="font-label text-xs font-bold text-on-surface tracking-tighter uppercase">OPERATOR_01</div>
-            <div className="font-label text-[10px] text-primary-dim uppercase">STATUS: ADVENTURING</div>
+            <div className="font-label text-sm font-bold text-on-surface tracking-tighter uppercase mb-1">VIDISH_SRIVASTAVA</div>
+            <div className="font-label text-[10px] text-primary-dim uppercase tracking-widest">STATUS: ADVENTURING</div>
           </div>
         </div>
       </div>
