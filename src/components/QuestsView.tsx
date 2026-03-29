@@ -21,7 +21,7 @@ const QuestsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linked
       id: repo.id.toString(),
       title: repo.name,
       status: 'ACTIVE',
-      reward: `${repo.stargazers_count} STARS`,
+      reward: '5 STARS',
       difficulty: repo.stargazers_count > 10 ? 'EPIC' : 'COMMON',
       description: repo.description || 'No description available in archives.'
     }));
