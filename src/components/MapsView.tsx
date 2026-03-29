@@ -16,9 +16,9 @@ const MapsView = () => {
       className="relative"
     >
       <div className="absolute -left-12 top-0 w-2 h-24 bg-primary"></div>
-      <div className="flex items-end gap-4 mb-2">
-        <h1 className="text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">TACTICAL_MAP</h1>
-        <span className="font-label text-primary font-bold tracking-[0.3em] mb-1">SCANNING_REGION...</span>
+      <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-2">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">TACTICAL_MAP</h1>
+        <span className="font-label text-primary font-bold tracking-[0.3em] mb-1 animate-pulse">SCANNING_REGION...</span>
       </div>
       <p className="font-body text-on-surface-variant max-w-2xl text-lg mb-8">
         This tactical map visualizes the <span className="text-primary font-bold">Global Deployment Nodes</span> and data vaults within my professional ecosystem. Each node represents a live environment where my modules are currently active or archived.

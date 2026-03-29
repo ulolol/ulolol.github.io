@@ -27,7 +27,7 @@ const Header = ({ profile, linkedin, activeView, setView }: HeaderProps) => {
           <span className="font-label text-[10px] tracking-widest text-primary uppercase">SYNC LEVEL 99</span>
         </div>
         <a 
-          href="https://www.linkedin.com/in/ulolol" 
+          href="https://www.linkedin.com/in/vidish-srivastava-kaos" 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-on-surface-variant hover:bg-primary/10 p-2 rounded transition-all"

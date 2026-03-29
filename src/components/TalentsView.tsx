@@ -19,9 +19,9 @@ const TalentsView = ({ repos, linkedin }: { repos: GitHubRepo[], linkedin: Linke
       animate={{ opacity: 1, x: 0 }}
     >
       <div className="absolute -left-12 top-0 w-2 h-24 bg-primary"></div>
-      <div className="flex items-end gap-4 mb-2">
-        <h1 className="text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">TALENT_TREE</h1>
-        <span className="font-label text-primary font-bold tracking-[0.3em] mb-1">ANALYZING_SKILLS...</span>
+      <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-2">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-headline italic font-black uppercase tracking-tighter leading-none">TALENT_TREE</h1>
+        <span className="font-label text-primary font-bold tracking-[0.3em] mb-1 animate-pulse">ANALYZING_SKILLS...</span>
       </div>
       <p className="font-body text-on-surface-variant max-w-2xl text-lg mb-12">
         Neural mastery levels derived from my <span className="text-primary font-bold">LinkedIn Professional Archive</span>. These talents represent my tactical proficiency in high-velocity software engineering.

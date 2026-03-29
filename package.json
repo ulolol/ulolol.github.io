@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "rm -rf .vite-cache && npm run build && rm -rf assets index.html profile.jpg && cp -r dist/* . && git add . && git commit -m 'Deploy portfolio v2' && git push origin main"
+    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
     "lucide-react": "^0.479.0",
