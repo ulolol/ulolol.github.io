@@ -1,203 +1,59 @@
-# Design System Master File
+# Design System Master File: KAOS.OS v3.0
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
-> If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
-
----
-
-**Project:** Vidish Portfolio
-**Generated:** 2026-02-01 12:56:42
-**Category:** Quantum Computing Interface
+**Project:** KAOS.OS // Vidish Srivastava
+**Category:** Poké-Lab Neo-Brutalist & Handheld OS Interface
+**Aesthetic Archetype:** Bright, Funky, Tactile Neo-Brutalist with Holographic TCG Elements
 
 ---
 
-## Global Rules
+## 1. Global Tokens
 
-### Color Palette
+### Color Palette (60-30-10 Rule)
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#00FFFF` | `--color-primary` |
-| Secondary | `#7B61FF` | `--color-secondary` |
-| CTA/Accent | `#FF00FF` | `--color-cta` |
-| Background | `#050510` | `--color-background` |
-| Text | `#E0E0FF` | `--color-text` |
+| Role | Token | Light Mode (Daylight Poké-Lab) | Dark Mode (Gengar Arcade) |
+| :--- | :--- | :--- | :--- |
+| **60% Dominant Canvas** | `--color-surface` | `#FFFDF7` (Warm Alabaster) | `#0E1017` (Deep Arcade Charcoal) |
+| **Container Surface** | `--color-surface-container` | `#FFFFFF` (Card Pure White) | `#181B26` (Slate Cartridge) |
+| **Recessed Surface** | `--color-surface-container-low` | `#F6F3EB` (Tactile Putty) | `#13151F` (Recessed Slot) |
+| **Borders & Inks** | `--color-ink` | `#121316` (Obsidian Ink) | `#F4F0E6` (Chalk Ink) |
+| **10% Primary Accent** | `--color-primary` | `#FF3366` (Rotom Flame Coral) | `#FF4775` (Neon Coral) |
+| **30% Secondary Accent 1** | `--color-secondary` | `#FFD026` (Zapdos Volt Gold) | `#FFE047` (Volt Yellow) |
+| **30% Secondary Accent 2** | `--color-tertiary` | `#00E5A3` (Bulbasaur Cyber Mint) | `#19F2B0` (Matrix Mint) |
+| **30% Secondary Accent 3** | `--color-quaternary` | `#38BDF8` (Porygon Sky Cyan) | `#4CE2FF` (Holo Cyan) |
 
-**Color Notes:** Quantum cyan + interference purple
+### Elemental Domain Palette
+- **AI & Neural Networks (`AI_PSYCHIC`)**: `#FF3366` (Coral Pink)
+- **Kernel & Systems OS (`KERNEL_ELECTRIC`)**: `#FFD026` (Volt Gold)
+- **Quantum & Deep Computing (`QUANTUM_DRAGON`)**: `#38BDF8` (Sky Cyan)
+- **Rust & Low-Level Infrastructure (`SYSTEMS_STEEL`)**: `#00E5A3` (Cyber Mint)
+- **Gaming & Arcade Experiments (`GAMING_FIRE`)**: `#FF8A00` (Charizard Flame)
 
-### Typography
-
-- **Heading Font:** Archivo
-- **Body Font:** Space Grotesk
-- **Mood:** minimal, portfolio, designer, creative, clean, artistic
-- **Google Fonts:** [Archivo + Space Grotesk](https://fonts.google.com/share?selection.family=Archivo:wght@300;400;500;600;700|Space+Grotesk:wght@300;400;500;600;700)
-
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-```
-
-### Spacing Variables
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
-
-### Shadow Depths
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+### Typography Hierarchy
+- **Display / Headlines (`--font-headline`)**: `'Syne'`, sans-serif (700/800 weights, tight tracking, expressive geometric character).
+- **Body (`--font-body`)**: `'Plus Jakarta Sans'`, sans-serif (400/500/600 weights, high legibility).
+- **Cartridge Badges & Telemetry (`--font-label`)**: `'Space Grotesk'`, sans-serif (700 weight, bold uppercase).
+- **Data & Metrics (`--font-mono`)**: `'JetBrains Mono'`, monospace (tabular numeric alignment).
 
 ---
 
-## Component Specs
+## 2. Materiality & Interaction Rules
 
-### Buttons
-
-```css
-/* Primary Button */
-.btn-primary {
-  background: #FF00FF;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #00FFFF;
-  border: 2px solid #00FFFF;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
-
-### Cards
-
-```css
-.card {
-  background: #050510;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #00FFFF;
-  outline: none;
-  box-shadow: 0 0 0 3px #00FFFF20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
+1. **Tactile Neo-Brutalist Elevation (`.neo-box`)**:
+   - `2px solid var(--color-ink)` border.
+   - `4px 4px 0px var(--color-ink)` hard offset shadow.
+   - On hover: `-2px -2px` translation with `6px 6px 0px var(--color-ink)` shadow.
+   - On active/press: `+2px +2px` translation with zero shadow to simulate physical button depression.
+2. **Holographic TCG Foil (`.holo-foil`)**:
+   - Dynamic 115-degree iridescent linear sheen sweep on hover.
+3. **No Text Emojis**:
+   - All badges, status indicators, and category markers are custom vector SVGs (`lucide-react` / SVG paths).
+4. **8-Bit Chiptune Web Audio Feedback**:
+   - Low-latency square/triangle wave blips on click, tab switch, and quest completion, with a persistent mute toggle in the OS bar.
 
 ---
 
-## Style Guidelines
+## 3. OpenUI Integration
 
-**Style:** Dark Mode (OLED)
-
-**Keywords:** Dark theme, low light, high contrast, deep black, midnight blue, eye-friendly, OLED, night mode, power efficient
-
-**Best For:** Night-mode apps, coding platforms, entertainment, eye-strain prevention, OLED devices, low-light
-
-**Key Effects:** Minimal glow (text-shadow: 0 0 10px), dark-to-light transitions, low white emission, high readability, visible focus
-
-### Page Pattern
-
-**Pattern Name:** Portfolio Grid
-
-- **Conversion Strategy:**  hover overlay info,  lightbox view, Visuals first. Filter by category. Fast loading essential.
-- **CTA Placement:** Project Card Hover + Footer Contact
-- **Section Order:** 1. Hero (Name/Role), 2. Project Grid (Masonry), 3. About/Philosophy, 4. Contact
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Generic tech design
-- ❌ No viz
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- **Custom Component Library**: `kaosOpenUILibrary` assembled via `createLibrary` from `@openuidev/react-lang` and `@openuidev/react-ui`.
+- **Renderer Component**: `<Renderer library={kaosOpenUILibrary} response={streamedText} isStreaming={isStreaming} />`.
+- **Zero GenAI API Key Policy**: Runs 100% in-browser using deterministic OpenUI Lang stream synthesis.

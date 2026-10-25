@@ -1,49 +1,178 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,900;1,900&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space_Grotesk:wght@300;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-headline: "Epilogue", sans-serif;
+  --font-headline: "Syne", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
-  --font-label: "Space Grotesk", monospace;
+  --font-label: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  --color-surface: #0a0f13;
-  --color-surface-container: #141a1f;
-  --color-surface-container-low: #0e1418;
-  --color-surface-container-high: #1a2026;
-  --color-surface-container-highest: #1f272c;
-  --color-surface-container-lowest: #000000;
+  --color-surface: var(--color-surface);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container-high: var(--color-surface-container-high);
+  --color-surface-container-highest: var(--color-surface-container-highest);
   
-  --color-primary: #8ff5ff;
-  --color-primary-dim: #00deec;
-  --color-primary-container: #00eefc;
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
   
-  --color-secondary: #ff7168;
-  --color-tertiary: #ffe792;
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-secondary: var(--color-secondary);
+  --color-tertiary: var(--color-tertiary);
+  --color-quaternary: var(--color-quaternary);
+  --color-accent-purple: var(--color-accent-purple);
+  --color-accent-orange: var(--color-accent-orange);
   
-  --color-on-surface: #f3f7fd;
-  --color-on-surface-variant: #a7abb1;
-  
-  --color-outline: #71767b;
-  --color-outline-variant: #43484d;
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+}
+
+:root {
+  /* Daylight Poké-Lab Theme (Default Bright & Funky) */
+  --color-surface: #FFFDF7;
+  --color-surface-container: #FFFFFF;
+  --color-surface-container-low: #F6F3EB;
+  --color-surface-container-high: #EFE9DC;
+  --color-surface-container-highest: #E2DACB;
+
+  --color-ink: #121316;
+  --color-ink-muted: #5E6370;
+
+  --color-primary: #FF3366;       /* Rotom Coral */
+  --color-primary-hover: #E01E53;
+  --color-secondary: #FFD026;     /* Zapdos Gold */
+  --color-tertiary: #00E5A3;      /* Bulbasaur Mint */
+  --color-quaternary: #38BDF8;    /* Porygon Cyan */
+  --color-accent-purple: #8B5CF6; /* Psychic Purple */
+  --color-accent-orange: #FF8A00; /* Charizard Flame */
+
+  --color-on-surface: #121316;
+  --color-on-surface-variant: #4F5565;
+  --color-outline: #121316;
+  --color-outline-variant: #D1CAC0;
+
+  --shadow-offset: 4px 4px 0px #121316;
+  --shadow-offset-sm: 2px 2px 0px #121316;
+  --shadow-offset-lg: 6px 6px 0px #121316;
+  --shadow-offset-hover: 6px 6px 0px #121316;
+}
+
+.dark {
+  /* Gengar Night Arcade Mode */
+  --color-surface: #0E1017;
+  --color-surface-container: #181B26;
+  --color-surface-container-low: #13151F;
+  --color-surface-container-high: #202433;
+  --color-surface-container-highest: #2B3045;
+
+  --color-ink: #F4F0E6;
+  --color-ink-muted: #9BA3B8;
+
+  --color-primary: #FF4775;
+  --color-primary-hover: #FF668E;
+  --color-secondary: #FFE047;
+  --color-tertiary: #19F2B0;
+  --color-quaternary: #4CE2FF;
+  --color-accent-purple: #A78BFA;
+  --color-accent-orange: #FFA338;
+
+  --color-on-surface: #F8FAFC;
+  --color-on-surface-variant: #A4B0C7;
+  --color-outline: #F4F0E6;
+  --color-outline-variant: #2D3349;
+
+  --shadow-offset: 4px 4px 0px #F4F0E6;
+  --shadow-offset-sm: 2px 2px 0px #F4F0E6;
+  --shadow-offset-lg: 6px 6px 0px #F4F0E6;
+  --shadow-offset-hover: 6px 6px 0px #F4F0E6;
 }
 
 @layer base {
   body {
-    @apply bg-surface text-on-surface font-body selection:bg-primary selection:text-surface-container-lowest;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 }
 
-.clipped-corner {
-  clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 0 100%);
+/* Blueprint Dot-Matrix Pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(18, 19, 22, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dark .dot-grid {
+  background-image: radial-gradient(circle, rgba(244, 240, 230, 0.1) 1px, transparent 1px);
 }
 
-.stat-segment {
-  height: 4px;
-  width: 8%;
-  background-color: currentColor;
+/* Tactile Neo-Brutalist Utility Classes */
+.neo-box {
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-offset);
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.glass-panel {
-  background: rgba(31, 39, 44, 0.6);
-  backdrop-filter: blur(12px);
+.neo-box-sm {
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-offset-sm);
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.neo-box-lg {
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-offset-lg);
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.neo-btn {
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-offset);
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-offset-hover);
+}
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--color-ink);
+}
+
+/* Holographic TCG Foil Sheen */
+.holo-foil {
+  position: relative;
+  overflow: hidden;
+}
+.holo-foil::before {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 51, 102, 0.15) 35%,
+    rgba(255, 208, 38, 0.25) 45%,
+    rgba(0, 229, 163, 0.25) 55%,
+    rgba(56, 189, 248, 0.2) 65%,
+    transparent 80%
+  );
+  transform: rotate(-15deg) translateY(-100%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+.holo-foil:hover::before {
+  transform: rotate(-15deg) translateY(100%);
+}
+
+/* Cartridge Notch Edge */
+.cartridge-tab {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
 }

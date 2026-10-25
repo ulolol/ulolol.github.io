@@ -1,43 +1,171 @@
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Renderer } from '@openuidev/react-lang';
+import { Bot, Play, Code, Sparkles, RefreshCw, Terminal as TerminalIcon } from 'lucide-react';
+import { kaosOpenUILibrary } from '../openui/library';
+import {
+  PRESET_PROMPTS,
+  PresetPromptId,
+  generateOpenUILangProgram,
+  streamOpenUILang,
+  SynthContext,
+} from '../openui/synthesizer';
+import { playChiptuneClick, playLevelUp } from '../utils/audio';
 
-const Terminal = ({ logs }: { logs: string[] }) => {
+interface TerminalProps {
+  context: SynthContext;
+}
+
+export const Terminal: React.FC<TerminalProps> = ({ context }) => {
+  const [activePrompt, setActivePrompt] = useState<PresetPromptId>('legendary_deck');
+  const [streamedText, setStreamedText] = useState<string>('');
+  const [isStreaming, setIsStreaming] = useState<boolean>(false);
+  const [showCode, setShowCode] = useState<boolean>(false);
+  const cancelStreamRef = useRef<(() => void) | null>(null);
+
+  const startStream = (promptId: PresetPromptId) => {
+    playChiptuneClick();
+    if (cancelStreamRef.current) {
+      cancelStreamRef.current();
+    }
+
+    setActivePrompt(promptId);
+    setIsStreaming(true);
+    setStreamedText('');
+
+    const fullProgram = generateOpenUILangProgram(promptId, context);
+
+    cancelStreamRef.current = streamOpenUILang(
+      fullProgram,
+      (chunk) => {
+        setStreamedText(chunk);
+      },
+      () => {
+        setIsStreaming(false);
+        playLevelUp();
+      },
+      14 // smooth token delay
+    );
+  };
+
+  useEffect(() => {
+    // Initial stream on mount
+    startStream('legendary_deck');
+
+    return () => {
+      if (cancelStreamRef.current) {
+        cancelStreamRef.current();
+      }
+    };
+  }, []);
+
   return (
-    <section className="mt-16 bg-surface-container-lowest border-l-4 border-primary p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h4 className="font-headline italic text-2xl uppercase tracking-tighter text-primary mb-6">SCANNING_INVENTORY_REPORT</h4>
-          <div className="space-y-4 font-label text-xs tracking-[0.15em] text-on-surface/80">
-            {logs.map((log, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="flex gap-4"
+    <section className="my-8 neo-box bg-surface-container rounded-2xl p-4 sm:p-6 border-2 border-ink transition-colors">
+      {/* Rotom-OS Deck Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-ink/10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary text-white border-2 border-ink flex items-center justify-center shadow-[2px_2px_0px_#121316]">
+            <Bot className="w-5 h-5 animate-bounce" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="font-headline font-black text-xl uppercase tracking-tight text-on-surface">
+                ROTOM-OS // OPENUI GENERATIVE DECK
+              </h2>
+              <span className="px-2 py-0.5 text-[9px] font-mono font-bold bg-tertiary text-ink border border-ink rounded-full">
+                CLIENT-SIDE 100%
+              </span>
+            </div>
+            <p className="font-body text-xs text-on-surface-variant">
+              Zero-API-key OpenUI Lang parser and dynamic streaming component renderer.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              playChiptuneClick();
+              setShowCode(!showCode);
+            }}
+            className={`neo-btn px-3 py-1.5 text-xs rounded-lg flex items-center gap-1.5 transition-colors ${
+              showCode ? 'bg-secondary text-ink' : 'bg-surface-container-low text-on-surface'
+            }`}
+          >
+            <Code className="w-3.5 h-3.5" />
+            <span>{showCode ? 'HIDE OPENUI LANG' : 'INSPECT OPENUI LANG'}</span>
+          </button>
+
+          <button
+            onClick={() => startStream(activePrompt)}
+            disabled={isStreaming}
+            title="Re-run generative stream"
+            className="neo-btn p-1.5 rounded-lg bg-surface-container-low hover:bg-secondary text-ink disabled:opacity-50"
+          >
+            <RefreshCw className={`w-4 h-4 ${isStreaming ? 'animate-spin' : ''}`} />
+          </button>
+        </div>
+      </div>
+
+      {/* Preset Prompt Cartridges */}
+      <div className="mb-6">
+        <span className="font-mono text-[10px] font-bold uppercase text-ink-muted block mb-2 tracking-wider">
+          INSERT PROMPT CARTRIDGE:
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {PRESET_PROMPTS.map((preset) => {
+            const active = activePrompt === preset.id;
+            return (
+              <button
+                key={preset.id}
+                onClick={() => startStream(preset.id)}
+                disabled={isStreaming}
+                className={`neo-btn px-3 py-2 text-xs rounded-xl flex items-center gap-2 transition-all ${
+                  active
+                    ? 'bg-secondary text-ink shadow-[2px_2px_0px_#121316] -translate-y-0.5'
+                    : 'bg-surface-container-low hover:bg-surface-container-high text-on-surface'
+                }`}
               >
-                <span className="text-primary-dim shrink-0">
-                  {log.startsWith('[ ERROR ]') ? '[ ERROR ]' : `[ ${(i * 0.042).toFixed(3)}s ]`}
+                <Play className={`w-3 h-3 ${active ? 'fill-current' : ''}`} />
+                <span>{preset.label}</span>
+                <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-surface border border-ink/20">
+                  {preset.badge}
                 </span>
-                <span className={`uppercase ${log.startsWith('[ ERROR ]') ? 'text-secondary' : ''}`}>
-                  {log.replace('[ ERROR ] ', '')}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+              </button>
+            );
+          })}
         </div>
-        
-        <div className="relative bg-surface-container overflow-hidden group h-64">
-          <img 
-            alt="High-tech mechanical dragon" 
-            className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity"
-            src="/cyborg_dragon.png"
-            referrerPolicy="no-referrer"
+      </div>
+
+      {/* Optional OpenUI Lang Code Stream Inspector */}
+      {showCode && (
+        <div className="mb-6 neo-box-sm bg-surface-container-lowest text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto border border-ink">
+          <div className="flex items-center justify-between text-[10px] text-ink-muted border-b border-ink/40 pb-2 mb-2">
+            <span className="flex items-center gap-1.5">
+              <TerminalIcon className="w-3.5 h-3.5 text-secondary" />
+              <span>OPENUI LANG DECLARATIVE STREAM</span>
+            </span>
+            <span className="text-secondary">{isStreaming ? 'STREAMING...' : 'PARSED & MOUNTED'}</span>
+          </div>
+          <pre className="whitespace-pre-wrap leading-relaxed font-mono">
+            {streamedText || '# Initializing OpenUI Lang stream...'}
+          </pre>
+        </div>
+      )}
+
+      {/* Live OpenUI Renderer Container */}
+      <div className="neo-box-sm bg-surface-container-low rounded-xl p-4 sm:p-6 border border-ink/20 min-h-[300px]">
+        {streamedText ? (
+          <Renderer
+            library={kaosOpenUILibrary}
+            response={streamedText}
+            isStreaming={isStreaming}
           />
-          <div className="absolute inset-0 p-6 flex flex-col justify-end">
-            <div className="bg-primary text-surface-container-lowest font-label text-[10px] font-bold uppercase tracking-widest px-2 py-1 w-fit mb-2">SYSTEM_IMAGE</div>
-            <div className="font-headline italic text-xl uppercase tracking-tight">INFRASTRUCTURE_CORE_V4</div>
+        ) : (
+          <div className="h-64 flex flex-col items-center justify-center text-center text-ink-muted gap-3">
+            <Sparkles className="w-8 h-8 text-secondary animate-pulse" />
+            <p className="font-mono text-sm uppercase">Synthesizing OpenUI Lang AST Nodes...</p>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
