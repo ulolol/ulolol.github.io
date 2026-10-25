@@ -65,6 +65,10 @@ export function generateOpenUILangProgram(promptId: PresetPromptId | string, con
     ...(linkedin?.projects || []).map(p => {
       const rarity = resolveDifficulty(p.title, p.endDate ? 'ELITE' : 'ULTIMATUS');
       const element = resolveElementalType(p.title, p.description);
+      const normalizedTitle = p.title.toLowerCase().replace(/[-_ ]/g, '');
+      const matchingRepo = repos.find(r => r.name.toLowerCase().replace(/[-_ ]/g, '') === normalizedTitle);
+      const actualStars = matchingRepo ? matchingRepo.stargazers_count : 0;
+
       return {
         name: p.title,
         description: p.description,
@@ -73,8 +77,8 @@ export function generateOpenUILangProgram(promptId: PresetPromptId | string, con
         powerLevel: rarity === 'ULTIMATUS' ? 98 : rarity === 'LEGENDARY' ? 92 : 84,
         syncSpeed: 95,
         language: element === 'KERNEL_ELECTRIC' ? 'C & Assembly' : element === 'QUANTUM_DRAGON' ? 'Qiskit & Python' : 'Python',
-        stars: 42,
-        url: 'https://github.com/ulolol',
+        stars: actualStars,
+        url: matchingRepo ? matchingRepo.html_url : 'https://github.com/ulolol',
       };
     }),
     ...repos.map(r => {

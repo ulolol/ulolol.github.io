@@ -2,9 +2,10 @@ import React from 'react';
 import { defineComponent, createLibrary, defineAction } from '@openuidev/react-lang';
 import { openuiLibrary } from '@openuidev/react-ui';
 import { z } from 'zod';
-import { ExternalLink, Sparkles, Zap, Shield, Flame, Eye, Trophy, Star } from 'lucide-react';
+import { ExternalLink, Sparkles, Zap, Shield, Flame, Eye, Trophy } from 'lucide-react';
 import { playChiptuneClick, playHoloSparkle } from '../utils/audio';
 import { ELEMENTAL_CONFIGS, ElementalType } from '../types';
+import { SpiralIcon } from '../components/SpiralIcon';
 
 /* -------------------------------------------------------------------------- */
 /* Custom OpenUI Actions                                                      */
@@ -116,9 +117,9 @@ export const HoloCartridgeCard = defineComponent({
             <span className="w-2.5 h-2.5 rounded-full border border-ink" style={{ backgroundColor: config.accent }} />
             <span>{props.language || 'Multi-Stack'}</span>
             {props.stars > 0 && (
-              <span className="flex items-center gap-0.5 ml-2 text-amber-500 font-bold">
-                <Star className="w-3 h-3 fill-amber-500" />
-                {props.stars}
+              <span className="flex items-center gap-1 ml-2 text-primary font-mono font-bold text-xs" title={`${props.stars} Spirals`}>
+                <SpiralIcon className="w-3.5 h-3.5 text-primary group-hover:rotate-180 transition-transform duration-500" />
+                <span>{props.stars}</span>
               </span>
             )}
           </div>

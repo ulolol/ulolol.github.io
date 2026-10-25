@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Swords, Trophy, Sparkles, Filter, ExternalLink, Bot } from 'lucide-react';
-import { GitHubRepo, LinkedInProfile, resolveDifficulty, Rarity } from '../types';
+import { Swords, Trophy, Filter, ExternalLink, Bot } from 'lucide-react';
+import { GitHubRepo, LinkedInProfile, resolveDifficulty } from '../types';
 import { playChiptuneClick, playLevelUp } from '../utils/audio';
+import { SpiralIcon } from './SpiralIcon';
 
 interface QuestsViewProps {
   repos: GitHubRepo[];
@@ -36,7 +37,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
       description: r.description || 'Open-source tactical repository module.',
       status: 'COMPLETED' as const,
       difficulty: resolveDifficulty(r.name, r.stargazers_count > 10 ? 'EPIC' : r.stargazers_count > 2 ? 'ELITE' : 'COMMON'),
-      reward: `+${(r.stargazers_count * 100) + 500} XP // GITHUB STARS`,
+      reward: `+${(r.stargazers_count * 100) + 500} XP // REPO`,
       type: 'GITHUB_MODULE',
       url: r.html_url,
     }));
@@ -165,7 +166,10 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
             <div className="flex items-center justify-between md:justify-end gap-3 pt-3 md:pt-0 border-t-2 md:border-t-0 border-ink/10 shrink-0">
               <div className="text-left md:text-right">
                 <span className="font-mono text-[10px] font-bold text-ink-muted block uppercase">BOUNTY REWARD</span>
-                <span className="font-mono text-xs font-bold text-primary">{quest.reward}</span>
+                <span className="font-mono text-xs font-bold text-primary flex items-center gap-1 justify-end">
+                  <SpiralIcon className="w-3.5 h-3.5 text-primary" />
+                  <span>{quest.reward}</span>
+                </span>
               </div>
 
               <div className="flex items-center gap-2">

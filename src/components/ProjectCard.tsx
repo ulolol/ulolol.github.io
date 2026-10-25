@@ -1,7 +1,8 @@
 import React from 'react';
-import { ExternalLink, Star, Eye, Zap, Sparkles, Shield, Flame } from 'lucide-react';
+import { ExternalLink, Eye, Zap, Sparkles, Shield, Flame } from 'lucide-react';
 import { GitHubRepo, ElementalType, ELEMENTAL_CONFIGS, resolveDifficulty, resolveElementalType } from '../types';
 import { playChiptuneClick, playHoloSparkle } from '../utils/audio';
+import { SpiralIcon } from './SpiralIcon';
 
 interface ProjectCardProps {
   repo: GitHubRepo;
@@ -101,9 +102,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
           </span>
 
           {repo.stargazers_count > 0 && (
-            <span className="flex items-center gap-1 text-xs font-mono font-bold text-amber-500 ml-1">
-              <Star className="w-3.5 h-3.5 fill-amber-500" />
-              {repo.stargazers_count}
+            <span
+              className="flex items-center gap-1 text-xs font-mono font-bold text-primary ml-1 group"
+              title={`${repo.stargazers_count} Spirals`}
+            >
+              <SpiralIcon className="w-3.5 h-3.5 text-primary group-hover:rotate-180 transition-transform duration-500" />
+              <span>{repo.stargazers_count}</span>
             </span>
           )}
         </div>
