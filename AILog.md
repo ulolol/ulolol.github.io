@@ -31,10 +31,15 @@
 
 ## Issues
 - Initial Rollup annotation warning from transitive dependency comments in `zod/v4`. Resolved smoothly by Rollup during bundle generation without affecting build output.
+- Star counts on LinkedIn projects in OpenUI synthesizer had a mock `42` default; resolved to match real repository counts (0 for unstarred projects).
+- User requested replacing standard star icons with a theme-matching spiral emblem.
 
 ## Fixes
 - Configured clean build output (`emptyOutDir: true`) in `vite.config.ts`.
 - Maintained automatic GitHub API fetch with graceful fallback to `src/data/linkedin.json`.
+- Built [`SpiralIcon.tsx`](file:///Users/kaos/Documents/ulolol.github.io/src/components/SpiralIcon.tsx) (authentic vector Poké-spiral) and replaced star icons across `ProjectCard.tsx`, `QuestsView.tsx`, and `openui/library.tsx`.
+- Updated [`synthesizer.ts`](file:///Users/kaos/Documents/ulolol.github.io/src/openui/synthesizer.ts) to match LinkedIn projects to GitHub repos and use true star/spiral counts.
+- Successfully deployed build to `gh-pages`.
 
 ## Progress
 - [x] Research and plan creation.
