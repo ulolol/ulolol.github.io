@@ -78,7 +78,7 @@ export function generateOpenUILangProgram(promptId: PresetPromptId | string, con
         syncSpeed: 95,
         language: element === 'KERNEL_ELECTRIC' ? 'C & Assembly' : element === 'QUANTUM_DRAGON' ? 'Qiskit & Python' : 'Python',
         stars: actualStars,
-        url: matchingRepo ? matchingRepo.html_url : 'https://github.com/ulolol',
+        url: matchingRepo ? matchingRepo.html_url : (p.url || 'https://github.com/ulolol'),
       };
     }),
     ...repos.map(r => {

@@ -27,7 +27,8 @@
       "title": "KaOtiCKerneL",
       "description": "Kernel built from SCRATCH using ASM and C with a dedicated BootLoader, supporting 64-Bit execution.",
       "startDate": "2023-03-01",
-      "endDate": "2024-01-31"
+      "endDate": "2024-01-31",
+      "url": "https://github.com/ulolol/Ka0tiCKerneL"
     },
     {
       "id": "pj-synthetic",

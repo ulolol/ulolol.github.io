@@ -26,6 +26,7 @@ export interface LinkedInProject {
   description: string;
   startDate: string;
   endDate?: string; // If missing, it's in progress
+  url?: string; // Optional canonical project link
 }
 
 export interface LinkedInProfile {
@@ -127,6 +128,7 @@ export const resolveElementalType = (name: string, description: string = '', lan
 
 export const DIFFICULTY_OVERRIDES: Record<string, Rarity> = {
   'kaotichernel': 'ULTIMATUS',
+  'ka0tickernel': 'ULTIMATUS',
   'ka0sgfx': 'ULTIMATUS',
   'xda developers legacy': 'ULTIMATUS',
   'ad click fraud detection': 'LEGENDARY',

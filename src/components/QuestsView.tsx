@@ -23,7 +23,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
     difficulty: resolveDifficulty(p.title, p.endDate ? 'ELITE' : 'ULTIMATUS'),
     reward: p.endDate ? '+2500 XP // ARCHIVED' : '+5000 XP // ACTIVE DEPLOYMENT',
     type: 'LINKEDIN_FLAGSHIP',
-    url: 'https://github.com/ulolol',
+    url: p.url || 'https://github.com/ulolol',
   }));
 
   // GitHub repo quests
