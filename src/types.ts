@@ -126,7 +126,8 @@ export const resolveElementalType = (name: string, description: string = '', lan
 };
 
 export const DIFFICULTY_OVERRIDES: Record<string, Rarity> = {
-  'kaotichernel': 'LEGENDARY',
+  'kaotichernel': 'ULTIMATUS',
+  'ka0sgfx': 'ULTIMATUS',
   'xda developers legacy': 'ULTIMATUS',
   'ad click fraud detection': 'LEGENDARY',
   'snapper-tui-rust': 'LEGENDARY',
