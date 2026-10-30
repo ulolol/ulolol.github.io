@@ -129,12 +129,17 @@ export const TalentsView: React.FC<TalentsViewProps> = ({ linkedin }) => {
               <div className="flex items-center justify-between pb-3 mb-4 border-b-2 border-ink/10">
                 <div className="flex items-center gap-3">
                   {/* Geometric Vector Gym Badge */}
-                  <div
-                    className="w-12 h-12 rounded-xl border-2 border-ink flex items-center justify-center shadow-[3px_3px_0px_#121316] text-ink"
+                  <button
+                    onClick={() => {
+                      playLevelUp();
+                    }}
+                    title={`Inspect ${cat.badgeName}`}
+                    className="w-12 h-12 rounded-xl border-2 border-ink flex items-center justify-center shadow-[3px_3px_0px_#121316] text-ink cursor-pointer hover:scale-105 active:scale-95 transition-transform"
                     style={{ backgroundColor: cat.badgeColor }}
+                    aria-label={cat.badgeName}
                   >
                     {cat.icon}
-                  </div>
+                  </button>
                   <div>
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-primary block">
                       {cat.badgeLevel}

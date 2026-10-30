@@ -114,18 +114,44 @@ export const MapsView: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Node HUD Ribbon (Solves Mobile Touch & Collision) */}
+      <div className="sm:hidden neo-box-sm bg-surface-container p-2.5 rounded-xl border border-ink space-y-1.5">
+        <span className="font-mono text-[10px] font-bold text-ink-muted uppercase block">
+          TAP NODE TO INSPECT TELEMETRY:
+        </span>
+        <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+          {nodes.map((node) => {
+            const isSelected = activeNodeId === node.id;
+            return (
+              <button
+                key={node.id}
+                onClick={() => handleNodeClick(node.id)}
+                className={`shrink-0 px-2.5 py-1 rounded-lg border-2 border-ink font-mono text-[10px] font-bold flex items-center gap-1.5 active:scale-95 transition-all ${
+                  isSelected
+                    ? 'bg-secondary text-ink shadow-[2px_2px_0px_#121316]'
+                    : 'bg-surface-container-low text-on-surface'
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full border border-ink" style={{ backgroundColor: node.color }} />
+                <span>{node.name}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Main Map Canvas + HUD */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Interactive Map Canvas */}
-        <div className="lg:col-span-8 neo-box bg-surface-container-low rounded-2xl p-4 sm:p-6 border-2 border-ink relative overflow-hidden min-h-[420px] dot-grid flex flex-col justify-between">
+        <div className="lg:col-span-8 neo-box bg-surface-container-low rounded-2xl p-4 sm:p-6 border-2 border-ink relative overflow-hidden min-h-[380px] sm:min-h-[420px] dot-grid flex flex-col justify-between">
           {/* Map Top Bar */}
-          <div className="flex items-center justify-between z-10">
-            <div className="bg-surface-container px-3 py-1.5 rounded-lg border-2 border-ink text-xs font-mono font-bold flex items-center gap-2 shadow-[2px_2px_0px_#121316]">
+          <div className="flex items-center justify-between z-10 gap-2">
+            <div className="bg-surface-container px-2.5 sm:px-3 py-1.5 rounded-lg border-2 border-ink text-[11px] sm:text-xs font-mono font-bold flex items-center gap-1.5 sm:gap-2 shadow-[2px_2px_0px_#121316]">
               <Navigation className="w-3.5 h-3.5 text-primary" />
               <span>REGION: ARCHIPELAGO KAOS</span>
             </div>
 
-            <div className="bg-surface-container px-3 py-1.5 rounded-lg border-2 border-ink text-xs font-mono text-ink-muted hidden sm:block">
+            <div className="bg-surface-container px-2 sm:px-3 py-1.5 rounded-lg border-2 border-ink text-[10px] sm:text-xs font-mono text-ink-muted">
               LAT 37.77° N // LNG 122.41° W
             </div>
           </div>
@@ -147,13 +173,13 @@ export const MapsView: React.FC = () => {
                 key={node.id}
                 onClick={() => handleNodeClick(node.id)}
                 style={{ left: node.x, top: node.y }}
-                className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer transition-transform duration-200 ${
+                className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer transition-transform duration-200 active:scale-95 ${
                   isSelected ? 'scale-125' : 'hover:scale-110'
                 }`}
                 title={node.name}
               >
                 <div
-                  className={`w-10 h-10 rounded-2xl border-2 border-ink flex items-center justify-center shadow-[3px_3px_0px_#121316] text-ink transition-all ${
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border-2 border-ink flex items-center justify-center shadow-[3px_3px_0px_#121316] text-ink transition-all ${
                     isSelected ? 'ring-4 ring-primary/40' : ''
                   }`}
                   style={{ backgroundColor: node.color }}
@@ -165,8 +191,14 @@ export const MapsView: React.FC = () => {
                   {node.id === 'terminal' && <MapPin className="w-4 h-4" />}
                 </div>
 
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 rounded font-mono text-[10px] font-bold uppercase whitespace-nowrap bg-surface-container border border-ink text-on-surface shadow-[1px_1px_0px_#121316]">
+                {/* Desktop Full Label */}
+                <span className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 rounded font-mono text-[10px] font-bold uppercase whitespace-nowrap bg-surface-container border border-ink text-on-surface shadow-[1px_1px_0px_#121316]">
                   {node.name}
+                </span>
+
+                {/* Mobile Compact Label */}
+                <span className="sm:hidden absolute top-full left-1/2 -translate-x-1/2 mt-1 px-1 py-0.2 rounded font-mono text-[8px] font-bold uppercase whitespace-nowrap bg-surface-container border border-ink text-on-surface">
+                  {node.id.toUpperCase()}
                 </span>
               </button>
             );

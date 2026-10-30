@@ -63,8 +63,8 @@ export const Terminal: React.FC<TerminalProps> = ({ context }) => {
       {/* Rotom-OS Deck Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-ink/10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary text-white border-2 border-ink flex items-center justify-center shadow-[2px_2px_0px_#121316]">
-            <Bot className="w-5 h-5 animate-bounce" />
+          <div className="w-10 h-10 rounded-xl bg-primary text-white border-2 border-ink flex items-center justify-center shadow-[2px_2px_0px_#121316] group">
+            <Bot className={`w-5 h-5 ${isStreaming ? 'animate-spin' : ''} transition-transform duration-300`} />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ export const Terminal: React.FC<TerminalProps> = ({ context }) => {
                 key={preset.id}
                 onClick={() => startStream(preset.id)}
                 disabled={isStreaming}
-                className={`neo-btn px-3 py-2 text-xs rounded-xl flex items-center gap-2 transition-all ${
+                className={`neo-btn px-3 py-2 text-xs rounded-xl flex items-center gap-2 transition-all active:scale-95 cursor-pointer min-h-[38px] ${
                   active
                     ? 'bg-secondary text-ink shadow-[2px_2px_0px_#121316] -translate-y-0.5'
                     : 'bg-surface-container-low hover:bg-surface-container-high text-on-surface'
@@ -138,7 +138,7 @@ export const Terminal: React.FC<TerminalProps> = ({ context }) => {
 
       {/* Optional OpenUI Lang Code Stream Inspector */}
       {showCode && (
-        <div className="mb-6 neo-box-sm bg-surface-container-lowest text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto border border-ink">
+        <div className="mb-6 neo-box-sm bg-surface-container-lowest text-emerald-400 p-3 sm:p-4 rounded-xl font-mono text-[11px] sm:text-xs overflow-x-auto border border-ink">
           <div className="flex items-center justify-between text-[10px] text-ink-muted border-b border-ink/40 pb-2 mb-2">
             <span className="flex items-center gap-1.5">
               <TerminalIcon className="w-3.5 h-3.5 text-secondary" />

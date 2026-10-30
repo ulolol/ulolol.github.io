@@ -127,13 +127,17 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
         {filteredQuests.map((quest) => (
           <div
             key={quest.id}
-            className="neo-box bg-surface-container rounded-2xl p-5 border-2 border-ink flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:-translate-y-0.5 group"
+            className="neo-box bg-surface-container rounded-2xl p-4 sm:p-5 border-2 border-ink flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:-translate-y-0.5 active:scale-[0.99] group"
           >
-            <div className="flex items-start gap-4">
-              <div className={`w-12 h-12 rounded-xl border-2 border-ink flex items-center justify-center shrink-0 shadow-[2px_2px_0px_#121316] ${
+            <div className="flex items-start gap-3.5 sm:gap-4">
+              <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl border-2 border-ink flex items-center justify-center shrink-0 shadow-[2px_2px_0px_#121316] ${
                 quest.status === 'COMPLETED' ? 'bg-tertiary text-ink' : 'bg-secondary text-ink'
               }`}>
-                {quest.status === 'COMPLETED' ? <Trophy className="w-6 h-6" /> : <Swords className="w-6 h-6 animate-pulse" />}
+                {quest.status === 'COMPLETED' ? (
+                  <Trophy className="w-5 h-5 sm:w-6 sm:h-6" />
+                ) : (
+                  <Swords className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
+                )}
               </div>
 
               <div>
@@ -147,7 +151,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
                     {quest.difficulty}
                   </span>
                   <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                    quest.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900 animate-pulse'
+                    quest.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900'
                   }`}>
                     {quest.status}
                   </span>
@@ -166,7 +170,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
             <div className="flex items-center justify-between md:justify-end gap-3 pt-3 md:pt-0 border-t-2 md:border-t-0 border-ink/10 shrink-0">
               <div className="text-left md:text-right">
                 <span className="font-mono text-[10px] font-bold text-ink-muted block uppercase">BOUNTY REWARD</span>
-                <span className="font-mono text-xs font-bold text-primary flex items-center gap-1 justify-end">
+                <span className="font-mono text-xs font-bold text-primary flex items-center gap-1 justify-start md:justify-end">
                   <SpiralIcon className="w-3.5 h-3.5 text-primary" />
                   <span>{quest.reward}</span>
                 </span>
@@ -176,7 +180,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
                 <button
                   onClick={() => handleQuestAction(quest.title)}
                   title="Simulate in Rotom OpenUI Deck"
-                  className="neo-btn p-2 rounded-lg bg-surface-container-low hover:bg-secondary text-ink"
+                  className="neo-btn p-2 rounded-lg bg-surface-container-low hover:bg-secondary text-ink min-w-[38px] min-h-[38px] flex items-center justify-center active:scale-95 touch-manipulation"
                 >
                   <Bot className="w-4 h-4" />
                 </button>
@@ -186,7 +190,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ repos, linkedin, onOpenR
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playChiptuneClick}
-                  className="neo-btn px-3 py-1.5 text-xs rounded-lg bg-surface-container-high hover:bg-secondary text-ink flex items-center gap-1.5"
+                  className="neo-btn px-3 py-1.5 text-xs rounded-lg bg-surface-container-high hover:bg-secondary text-ink flex items-center gap-1.5 min-h-[38px] active:scale-95 touch-manipulation"
                 >
                   <span>INSPECT</span>
                   <ExternalLink className="w-3.5 h-3.5" />

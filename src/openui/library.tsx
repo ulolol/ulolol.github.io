@@ -46,7 +46,10 @@ export const HoloCartridgeCard = defineComponent({
         onMouseEnter={() => {
           if (isRare) playHoloSparkle();
         }}
-        className="neo-box holo-foil bg-surface-container rounded-xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 relative group"
+        onTouchStart={() => {
+          if (isRare) playHoloSparkle();
+        }}
+        className={`neo-box holo-foil ${isRare ? 'holo-ambient' : ''} bg-surface-container rounded-xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 active:scale-[0.98] relative group`}
       >
         {/* Cartridge Top Bar */}
         <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b-2 border-ink/10">

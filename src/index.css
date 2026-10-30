@@ -95,7 +95,21 @@
     color: var(--color-on-surface);
     font-family: var(--font-body);
     transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
   }
+}
+
+/* View Transition API Circular Theme Animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 /* Blueprint Dot-Matrix Pattern */
@@ -168,8 +182,47 @@
   pointer-events: none;
   z-index: 10;
 }
-.holo-foil:hover::before {
-  transform: rotate(-15deg) translateY(100%);
+
+@media (hover: hover) {
+  .holo-foil:hover::before {
+    transform: rotate(-15deg) translateY(100%);
+  }
+}
+
+/* On mobile/touch, run a subtle ambient sheen cycle & trigger active */
+@media (hover: none) {
+  .holo-foil.touch-sheen::before,
+  .holo-foil:active::before {
+    transform: rotate(-15deg) translateY(100%);
+  }
+}
+
+@keyframes ambientHoloSweep {
+  0%, 80% {
+    transform: rotate(-15deg) translateY(-100%);
+  }
+  90%, 100% {
+    transform: rotate(-15deg) translateY(100%);
+  }
+}
+
+@media (hover: none) {
+  .holo-ambient::before {
+    animation: ambientHoloSweep 7s infinite ease-in-out;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .neo-btn,
+  .neo-box,
+  .neo-box-sm,
+  .neo-box-lg,
+  .holo-foil::before {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* Cartridge Notch Edge */

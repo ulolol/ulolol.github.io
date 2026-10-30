@@ -159,12 +159,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </aside>
 
       {/* Mobile Bottom Navigation Dock */}
-      <nav className="fixed bottom-0 left-0 right-0 h-16 bg-surface/95 backdrop-blur-md border-t-2 border-ink z-50 flex items-center justify-around px-2 lg:hidden">
-        <MobileNavItem icon={<Layers className="w-5 h-5" />} label="Deck" active={activeView === 'DECK'} onClick={() => handleNav('DECK')} />
-        <MobileNavItem icon={<Bot className="w-5 h-5" />} label="Rotom.AI" active={activeView === 'ROTOM_AI'} onClick={() => handleNav('ROTOM_AI')} />
-        <MobileNavItem icon={<Award className="w-5 h-5" />} label="Badges" active={activeView === 'BADGES'} onClick={() => handleNav('BADGES')} />
-        <MobileNavItem icon={<Swords className="w-5 h-5" />} label="Quests" active={activeView === 'QUESTS'} onClick={() => handleNav('QUESTS')} />
-        <MobileNavItem icon={<Compass className="w-5 h-5" />} label="Map" active={activeView === 'MAP'} onClick={() => handleNav('MAP')} />
+      <nav className="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-md border-t-2 border-ink z-50 flex items-center justify-around px-2 pt-1 pb-[calc(0.25rem+env(safe-area-inset-bottom))] lg:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+        <MobileNavItem icon={<Layers className="w-4 h-4" />} label="Deck" active={activeView === 'DECK'} onClick={() => handleNav('DECK')} />
+        <MobileNavItem icon={<Bot className="w-4 h-4" />} label="Rotom.AI" active={activeView === 'ROTOM_AI'} onClick={() => handleNav('ROTOM_AI')} />
+        <MobileNavItem icon={<Award className="w-4 h-4" />} label="Badges" active={activeView === 'BADGES'} onClick={() => handleNav('BADGES')} />
+        <MobileNavItem icon={<Swords className="w-4 h-4" />} label="Quests" active={activeView === 'QUESTS'} onClick={() => handleNav('QUESTS')} />
+        <MobileNavItem icon={<Compass className="w-4 h-4" />} label="Region Map" active={activeView === 'MAP'} onClick={() => handleNav('MAP')} />
       </nav>
     </>
   );
@@ -183,12 +183,14 @@ const MobileNavItem = ({
 }) => (
   <button
     onClick={onClick}
-    className={`flex flex-col items-center justify-center py-1 px-3 rounded-lg transition-all ${
-      active ? 'text-primary font-bold' : 'text-on-surface-variant'
+    className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-xl transition-all cursor-pointer min-w-[56px] min-h-[44px] active:scale-95 touch-manipulation ${
+      active
+        ? 'bg-secondary text-ink border-2 border-ink shadow-[2px_2px_0px_#121316] font-bold'
+        : 'text-on-surface-variant hover:text-on-surface border-2 border-transparent'
     }`}
   >
     {icon}
-    <span className="text-[10px] font-mono mt-0.5 uppercase">{label}</span>
+    <span className="text-[9px] font-mono mt-0.5 uppercase tracking-tight whitespace-nowrap">{label}</span>
   </button>
 );
 

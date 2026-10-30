@@ -24,6 +24,19 @@ function getAudioContext(): AudioContext | null {
   return audioCtx;
 }
 
+// Auto-unlock AudioContext on first touch/pointerdown for mobile & web
+if (typeof window !== 'undefined') {
+  const unlockAudio = () => {
+    getAudioContext();
+    window.removeEventListener('pointerdown', unlockAudio);
+    window.removeEventListener('touchstart', unlockAudio);
+    window.removeEventListener('keydown', unlockAudio);
+  };
+  window.addEventListener('pointerdown', unlockAudio, { passive: true });
+  window.addEventListener('touchstart', unlockAudio, { passive: true });
+  window.addEventListener('keydown', unlockAudio, { passive: true });
+}
+
 export const isMuted = (): boolean => isAudioMuted;
 
 export const toggleMute = (): boolean => {

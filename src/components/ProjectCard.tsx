@@ -25,7 +25,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
       onMouseEnter={() => {
         if (isRare) playHoloSparkle();
       }}
-      className="neo-box holo-foil bg-surface-container rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 relative group"
+      onTouchStart={() => {
+        if (isRare) playHoloSparkle();
+      }}
+      className={`neo-box holo-foil ${isRare ? 'holo-ambient' : ''} bg-surface-container rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 active:scale-[0.98] relative group`}
     >
       {/* Top Header Bar */}
       <div>
@@ -68,7 +71,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
           <div>
             <div className="flex justify-between text-[10px] font-mono font-bold uppercase text-on-surface-variant mb-1">
               <span>POWER LEVEL</span>
-              <span className="text-primary font-bold">{powerLevel} HP</span>
+              <span className="text-primary font-bold tabular-nums">{powerLevel} HP</span>
             </div>
             <div className="w-full bg-surface-container-high h-2.5 rounded-full border border-ink/30 overflow-hidden">
               <div
@@ -81,7 +84,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
           <div>
             <div className="flex justify-between text-[10px] font-mono font-bold uppercase text-on-surface-variant mb-1">
               <span>SYNC SPEED</span>
-              <span className="text-tertiary font-bold">{syncSpeed} MHz</span>
+              <span className="text-tertiary font-bold tabular-nums">{syncSpeed} MHz</span>
             </div>
             <div className="w-full bg-surface-container-high h-2 rounded-full border border-ink/30 overflow-hidden">
               <div
