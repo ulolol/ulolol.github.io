@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { ExternalLink, Eye, Zap, Sparkles, Shield, Flame } from 'lucide-react';
 import { GitHubRepo, ElementalType, ELEMENTAL_CONFIGS, resolveDifficulty, resolveElementalType } from '../types';
 import { playChiptuneClick, playHoloSparkle } from '../utils/audio';
@@ -9,6 +9,10 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
+  const cardRef = useRef<HTMLElement>(null);
+  const [isRevealed, setIsRevealed] = useState(false);
+  const hasPlayedAudioRef = useRef(false);
+
   const element: ElementalType = resolveElementalType(repo.name, repo.description, repo.language);
   const rarity = resolveDifficulty(
     repo.name,
@@ -20,15 +24,52 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
   const powerLevel = Math.min(99, 55 + repo.stargazers_count * 2 + repo.forks_count * 5);
   const syncSpeed = Math.min(99, 45 + repo.name.length * 2);
 
+  useEffect(() => {
+    // Only engage IntersectionObserver scroll activation on mobile / touch devices
+    if (typeof window === 'undefined') return;
+    const isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+    if (!isTouch) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsRevealed(true);
+            if (isRare && !hasPlayedAudioRef.current) {
+              playHoloSparkle();
+              hasPlayedAudioRef.current = true;
+            }
+          } else {
+            setIsRevealed(false);
+            hasPlayedAudioRef.current = false;
+          }
+        });
+      },
+      {
+        threshold: 0.35, // Trigger when card enters center focus of viewport
+        rootMargin: '-10% 0px -15% 0px',
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isRare]);
+
   return (
     <article
+      ref={cardRef}
       onMouseEnter={() => {
         if (isRare) playHoloSparkle();
       }}
       onTouchStart={() => {
         if (isRare) playHoloSparkle();
       }}
-      className={`neo-box holo-foil ${isRare ? 'holo-ambient' : ''} bg-surface-container rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 active:scale-[0.98] relative group`}
+      className={`neo-box holo-foil ${isRevealed ? 'holo-active' : ''} bg-surface-container rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 active:scale-[0.98] relative group`}
     >
       {/* Top Header Bar */}
       <div>
@@ -58,7 +99,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
         </div>
 
         {/* Title & Description */}
-        <h3 className="font-headline font-black text-xl sm:text-2xl tracking-tight text-on-surface group-hover:text-primary transition-colors line-clamp-1 mb-2">
+        <h3 className="card-title font-headline font-black text-xl sm:text-2xl tracking-tight text-on-surface group-hover:text-primary transition-colors line-clamp-1 mb-2">
           {repo.name.replace(/_/g, ' ')}
         </h3>
 
@@ -109,7 +150,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
               className="flex items-center gap-1 text-xs font-mono font-bold text-primary ml-1 group"
               title={`${repo.stargazers_count} Spirals`}
             >
-              <SpiralIcon className="w-3.5 h-3.5 text-primary group-hover:rotate-180 transition-transform duration-500" />
+              <SpiralIcon className="spiral-spin w-3.5 h-3.5 text-primary transition-transform duration-500" />
               <span>{repo.stargazers_count}</span>
             </span>
           )}

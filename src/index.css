@@ -171,10 +171,10 @@
   background: linear-gradient(
     115deg,
     transparent 20%,
-    rgba(255, 51, 102, 0.15) 35%,
-    rgba(255, 208, 38, 0.25) 45%,
-    rgba(0, 229, 163, 0.25) 55%,
-    rgba(56, 189, 248, 0.2) 65%,
+    rgba(255, 51, 102, 0.18) 35%,
+    rgba(255, 208, 38, 0.28) 45%,
+    rgba(0, 229, 163, 0.28) 55%,
+    rgba(56, 189, 248, 0.22) 65%,
     transparent 80%
   );
   transform: rotate(-15deg) translateY(-100%);
@@ -189,27 +189,30 @@
   }
 }
 
-/* On mobile/touch, run a subtle ambient sheen cycle & trigger active */
-@media (hover: none) {
-  .holo-foil.touch-sheen::before,
-  .holo-foil:active::before {
-    transform: rotate(-15deg) translateY(100%);
-  }
+/* Active touch sheen when tapped */
+.holo-foil:active::before {
+  transform: rotate(-15deg) translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes ambientHoloSweep {
-  0%, 80% {
-    transform: rotate(-15deg) translateY(-100%);
-  }
-  90%, 100% {
-    transform: rotate(-15deg) translateY(100%);
-  }
+/* Scroll-triggered reveal state for mobile & PC */
+.holo-active {
+  transform: translateY(-4px) !important;
+}
+.holo-active::before {
+  transform: rotate(-15deg) translateY(100%) !important;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-@media (hover: none) {
-  .holo-ambient::before {
-    animation: ambientHoloSweep 7s infinite ease-in-out;
-  }
+/* Spiral rotate when card is active or hovered */
+.group:hover .spiral-spin,
+.holo-active .spiral-spin {
+  transform: rotate(180deg);
+}
+
+/* Card title highlight on hover or scroll active */
+.holo-active .card-title {
+  color: var(--color-primary);
 }
 
 /* Reduced motion support */
@@ -218,7 +221,8 @@
   .neo-box,
   .neo-box-sm,
   .neo-box-lg,
-  .holo-foil::before {
+  .holo-foil::before,
+  .holo-active {
     transition: none !important;
     animation: none !important;
     transform: none !important;

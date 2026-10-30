@@ -38,18 +38,58 @@ export const HoloCartridgeCard = defineComponent({
     url: z.string(),
   }),
   component: ({ props }) => {
+    const cardRef = React.useRef<HTMLElement>(null);
+    const [isRevealed, setIsRevealed] = React.useState(false);
+    const hasPlayedAudioRef = React.useRef(false);
+
     const config = ELEMENTAL_CONFIGS[props.element as ElementalType] || ELEMENTAL_CONFIGS.SYSTEMS_STEEL;
     const isRare = props.rarity === 'ULTIMATUS' || props.rarity === 'LEGENDARY';
 
+    React.useEffect(() => {
+      if (typeof window === 'undefined') return;
+      const isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+      if (!isTouch) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsRevealed(true);
+              if (isRare && !hasPlayedAudioRef.current) {
+                playHoloSparkle();
+                hasPlayedAudioRef.current = true;
+              }
+            } else {
+              setIsRevealed(false);
+              hasPlayedAudioRef.current = false;
+            }
+          });
+        },
+        {
+          threshold: 0.35,
+          rootMargin: '-10% 0px -15% 0px',
+        }
+      );
+
+      if (cardRef.current) {
+        observer.observe(cardRef.current);
+      }
+
+      return () => {
+        observer.disconnect();
+      };
+    }, [isRare]);
+
     return (
       <article
+        ref={cardRef}
         onMouseEnter={() => {
           if (isRare) playHoloSparkle();
         }}
         onTouchStart={() => {
           if (isRare) playHoloSparkle();
         }}
-        className={`neo-box holo-foil ${isRare ? 'holo-ambient' : ''} bg-surface-container rounded-xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 active:scale-[0.98] relative group`}
+        className={`neo-box holo-foil ${isRevealed ? 'holo-active' : ''} bg-surface-container rounded-xl p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 active:scale-[0.98] relative group`}
       >
         {/* Cartridge Top Bar */}
         <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b-2 border-ink/10">
