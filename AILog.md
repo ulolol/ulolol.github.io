@@ -68,4 +68,5 @@
 - [x] Add View Transitions circular theme reveal and Motion tab switching transitions.
 - [x] Resolve mobile touch events, ambient holographic foil sheen, and safe-area insets.
 - [x] Fix mobile map node collisions and quest bounty alignment.
+- [x] Implement mobile scroll-triggered holographic sheen & sparkle reveal (`IntersectionObserver`) matching PC hover.
 - [x] Update documentation (AILog.md, README.md, walkthrough.md).
